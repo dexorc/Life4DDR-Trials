@@ -16,6 +16,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.perrigogames.life4trials.R
+import com.perrigogames.life4trials.SettingsKeys
 import com.perrigogames.life4trials.data.Song
 import com.perrigogames.life4trials.data.SongResult
 import com.perrigogames.life4trials.util.SharedPrefsUtil
@@ -95,11 +96,11 @@ class SongEntryActivity: AppCompatActivity() {
             field_ex.addTextChangedListener(textWatcher)
 
             checkbox_expert.setOnCheckedChangeListener { _, isChecked ->
-                SharedPrefsUtil.setUserFlag(this, SettingsActivity.KEY_DETAILS_EXPERT, isChecked)
+                SharedPrefsUtil.setUserFlag(this, SettingsKeys.KEY_DETAILS_EXPERT, isChecked)
                 updateAdvancedFields(isChecked)
             }
             if (!checkbox_expert.isChecked) {
-                checkbox_expert.isChecked = getUserFlag(this, SettingsActivity.KEY_DETAILS_EXPERT, false)
+                checkbox_expert.isChecked = getUserFlag(this, SettingsKeys.KEY_DETAILS_EXPERT, false)
             }
             updateAdvancedFields(checkbox_expert.isChecked)
 
@@ -132,7 +133,7 @@ class SongEntryActivity: AppCompatActivity() {
         checkErrorForValue(greats, field_greats)
         checkErrorForValue(greatsLess, field_greats_less)
         checkErrorForValue(perfects, field_perfects)
-        if (!SharedPrefsUtil.getDebugFlag(this, SettingsActivity.KEY_DEBUG_ACCEPT_INVALID) &&
+        if (!SharedPrefsUtil.getDebugFlag(this, SettingsKeys.KEY_DEBUG_ACCEPT_INVALID) &&
             allFields.any { it.visibility == VISIBLE && it.error != null }) {
             Toast.makeText(this, R.string.make_sure_fields_filled, Toast.LENGTH_SHORT).show()
         } else {

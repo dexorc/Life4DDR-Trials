@@ -224,6 +224,8 @@ class SongDataManager(private val context: Context,
     fun getSongByName(name: String): SongDB? =
         songTitleQuery.setParameter("title", name).findFirst()
 
+    fun getCharts(): List<ChartDB> = chartBox.all
+
     fun getChartById(id: Long): ChartDB? = chartBox.get(id)
 
     fun getChartsById(ids: LongArray): MutableList<ChartDB> = chartBox.get(ids)

@@ -24,7 +24,17 @@ class CardDrawRoboTest {
     }
 
     @Test
-    fun testCardDraw_RealData() {
+    fun testCardDraw_RealData_Single() {
+        (1..CardDrawTest.DIFF_CAP).forEach { diff ->
+            println("Difficulty $diff:")
+            val draw = cardDrawManager.performCardDraw(chartDatabase, WeightedCardDrawOptions(playStyle = PlayStyle.SINGLE, weightedDiffs = mapOf(Pair(diff, 1))))
+            verifyDraw(draw, true) { TestCase.assertEquals(diff, it.difficultyNumber) }
+            println()
+        }
+    }
+
+    @Test
+    fun testCardDraw_RealData_Double() {
         (1..CardDrawTest.DIFF_CAP).forEach { diff ->
             println("Difficulty $diff:")
             val draw = cardDrawManager.performCardDraw(chartDatabase, WeightedCardDrawOptions(playStyle = PlayStyle.DOUBLE, weightedDiffs = mapOf(Pair(diff, 1))))

@@ -10,6 +10,9 @@ import io.objectbox.kotlin.query
 
 class TrialRepo: BaseManager() {
 
+    //
+    // ObjectBoxes
+    //
     private val sessionBox get() = objectBox.boxFor(TrialSessionDB::class.java)
     private val songBox get() = objectBox.boxFor(TrialSongResultDB::class.java)
 

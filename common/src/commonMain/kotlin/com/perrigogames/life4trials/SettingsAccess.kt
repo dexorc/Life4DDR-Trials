@@ -3,7 +3,7 @@ package com.perrigogames.life4trials
 expect class SettingsAccess {
 
     /** @return a stored flag in the user preferences */
-    fun getUserFlag(c: Any, flag: String, def: Boolean)
+    fun getUserFlag(c: T, flag: String, def: Boolean)
 
     /** @return a stored int in the user preferences */
     fun getUserInt(c: Any, flag: String, def: Int)
